@@ -1,3 +1,3 @@
-export enum ScreenRoute {
+export enum ApiRoute {
   REGISTRATION = "user/register",
 }

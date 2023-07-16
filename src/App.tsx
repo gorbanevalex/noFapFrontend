@@ -1,5 +1,5 @@
+import { Registration } from "pages/Auth";
 import { Routes, Route } from "react-router-dom";
-import { Registration } from "./components";
 
 function App() {
   return (

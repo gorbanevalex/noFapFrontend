@@ -4,7 +4,7 @@ import i18n from "i18n";
 import { useForm } from "react-hook-form";
 import { setUserData, setUserToken } from "storage/userStorage";
 import { UserRegistration } from "types";
-import { ScreenRoute } from "utils/constant";
+import { ApiRoute } from "utils/constant";
 import { registerFormResolver } from "validation";
 
 const initialStateForm: UserRegistration = {
@@ -28,7 +28,7 @@ export const useGetForm = () => {
 
   const onSubmit = (data: UserRegistration) => {
     makeRequest
-      .post(ScreenRoute.REGISTRATION, { ...data })
+      .post(ApiRoute.REGISTRATION, { ...data })
       .then((res) => {
         setUserData(res.data.user);
         setUserToken(res.data.token);
