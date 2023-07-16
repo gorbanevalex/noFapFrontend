@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es5",
+    "lib": ["es2019", "dom"],
+    "rootDir": "src",
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "checkJs": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "typeRoots": ["typings"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@*": ["./src/js/*"]
+    },
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false
+  },
+  "include": ["src", "**/*.ts", "**/*.tsx"]
+}
