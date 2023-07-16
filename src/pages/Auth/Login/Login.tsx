@@ -1,30 +1,24 @@
-import { FormProvider } from "react-hook-form";
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import i18n from "i18nConfig";
-import { useStyles } from "./Registration.style";
+import { FormProvider } from "react-hook-form";
 import { useGetForm } from "./controllers/useGetForm";
 
-const Registration = () => {
-  const classes = useStyles();
+const Login = () => {
   const { t } = i18n;
 
-  const { methods, onSubmit } = useGetForm();
-
+  const { methods, onSubmit, onChangeForm, serverErrorMessage } = useGetForm();
   const {
-    formState: { isDirty, errors },
     register,
     handleSubmit,
+    formState: { isDirty, errors },
   } = methods;
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit((data) => onSubmit(data))}>
-        <TextField
-          {...register("name")}
-          label={t("auth.name")}
-          helperText={errors.name?.message}
-          error={!!errors.name}
-        />
+      <form
+        onSubmit={handleSubmit((data) => onSubmit(data))}
+        onChange={onChangeForm}
+      >
         <TextField
           {...register("login")}
           label={t("auth.login")}
@@ -41,8 +35,9 @@ const Registration = () => {
           {t("common.send")}
         </button>
       </form>
+      {serverErrorMessage && <Typography>{serverErrorMessage}</Typography>}
     </FormProvider>
   );
 };
 
-export default Registration;
+export default Login;

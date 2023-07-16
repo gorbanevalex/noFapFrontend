@@ -1,46 +1,49 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import makeRequest from "axiosConfig";
 import i18n from "i18nConfig";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { setUserData, setUserToken } from "storage/userStorage";
-import { UserRegistration } from "types";
+import { UserLogin } from "types";
 import { ApiRoute } from "utils/constant";
-import { registerFormResolver } from "validation";
+import { loginFormResolver } from "validation";
 
-const initialStateForm: UserRegistration = {
-  name: "",
+const initialStateForm: UserLogin = {
   login: "",
   password: "",
 };
 
 export const useGetForm = () => {
   const { t } = i18n;
+  const [serverErrorMessage, setServerErrorMessage] = useState<null | string>(
+    null
+  );
 
   const methods = useForm({
     defaultValues: {
       ...initialStateForm,
     },
     mode: "onChange",
-    resolver: yupResolver(registerFormResolver(t)),
+    resolver: yupResolver(loginFormResolver(t)),
   });
 
-  const { setError } = methods;
-
-  const onSubmit = (data: UserRegistration) => {
+  const onSubmit = (data: UserLogin) => {
     makeRequest
-      .post(ApiRoute.REGISTRATION, { ...data })
+      .post(ApiRoute.LOGIN, { ...data })
       .then((res) => {
         setUserData(res.data.user);
         setUserToken(res.data.token);
       })
       .catch((error) => {
-        const type = error.response.data?.type;
-        if (type) {
-          setError(type, { message: error.response.data.msg });
-        }
-        //Тут добавить надо будет когда 500 ошибка, сервер лег если
+        setServerErrorMessage(error.response.data.msg);
       });
   };
 
-  return { methods, onSubmit };
+  const onChangeForm = () => {
+    if (serverErrorMessage) {
+      setServerErrorMessage(null);
+    }
+  };
+
+  return { methods, onSubmit, onChangeForm, serverErrorMessage };
 };

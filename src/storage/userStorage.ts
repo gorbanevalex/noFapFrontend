@@ -1,6 +1,6 @@
-import { UserRegistrationResponse } from "../types";
+import { UserAuthResponse } from "../types";
 
-export const setUserData = (data: UserRegistrationResponse) => {
+export const setUserData = (data: UserAuthResponse) => {
   const jsonData = JSON.stringify(data);
   localStorage.setItem("userData", jsonData);
 };

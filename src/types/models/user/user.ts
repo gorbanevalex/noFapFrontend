@@ -1,10 +1,12 @@
+import { string } from "yup";
+
 export type UserRegistration = {
   login: string;
   name: string;
   password: string;
 };
 
-export type UserRegistrationResponse = {
+export type UserAuthResponse = {
   createdAt: string;
   login: string;
   name: string;
@@ -12,4 +14,9 @@ export type UserRegistrationResponse = {
   updateAt: string;
   __v: string;
   _id: string;
+};
+
+export type UserLogin = {
+  login: string;
+  password: string;
 };

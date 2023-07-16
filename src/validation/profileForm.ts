@@ -9,3 +9,12 @@ export const registerFormResolver = (t: any) =>
       .required(t("yup.requiredField"))
       .min(8, t("yup.passwordLength")),
   });
+
+export const loginFormResolver = (t: any) =>
+  yup.object().shape({
+    login: yup.string().required(t("yup.requiredField")),
+    password: yup
+      .string()
+      .required(t("yup.requiredField"))
+      .min(8, t("yup.passwordLength")),
+  });
