@@ -12,6 +12,7 @@ export type UserAuthResponse = {
   name: string;
   password: string;
   updateAt: string;
+  timer: number;
   __v: string;
   _id: string;
 };

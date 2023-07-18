@@ -1,7 +1,6 @@
 import { FormProvider } from "react-hook-form";
 import {
   Typography,
-  Button,
   TextField,
   Link,
   Snackbar,
@@ -20,8 +19,14 @@ const Login = () => {
   const { t } = i18n;
 
   const [isOpenErrorSnackbar, setIsOpenErrorSnackbar] = useState(false);
-  const { methods, onSubmit, onChangeForm, serverErrorMessage, serverError, isLoading } =
-    useGetForm();
+  const {
+    methods,
+    onSubmit,
+    onChangeForm,
+    serverErrorMessage,
+    serverError,
+    isLoading,
+  } = useGetForm();
 
   useEffect(() => {
     if (serverErrorMessage) {

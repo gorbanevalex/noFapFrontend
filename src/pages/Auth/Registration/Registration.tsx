@@ -1,13 +1,11 @@
 import { FormProvider } from "react-hook-form";
-import { Typography, Button, TextField, Link } from "@mui/material";
-import {
-  LoadingButton
-} from "@mui/lab"
+import { Typography, TextField, Link } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import i18n from "i18nConfig";
 import { useStyles } from "./Registration.style";
 import { useGetForm } from "./controllers/useGetForm";
 import { Link as RouterLink } from "react-router-dom";
-import {ArrowForward} from "@mui/icons-material";
+import { ArrowForward } from "@mui/icons-material";
 
 const Registration = () => {
   const classes = useStyles();
