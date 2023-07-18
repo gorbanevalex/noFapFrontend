@@ -18,6 +18,8 @@ export const useGetForm = () => {
   const [serverErrorMessage, setServerErrorMessage] = useState<null | string>(
     null
   );
+  const [serverError, setServerError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const methods = useForm({
     defaultValues: {
@@ -28,22 +30,34 @@ export const useGetForm = () => {
   });
 
   const onSubmit = (data: UserLogin) => {
+    setIsLoading(true);
     makeRequest
       .post(ApiRoute.LOGIN, { ...data })
       .then((res) => {
         setUserData(res.data.user);
         setUserToken(res.data.token);
+        setIsLoading(false);
       })
       .catch((error) => {
         setServerErrorMessage(error.response.data.msg);
+        setServerError(true);
+        setIsLoading(false);
       });
   };
 
   const onChangeForm = () => {
     if (serverErrorMessage) {
       setServerErrorMessage(null);
+      setServerError(false);
     }
   };
 
-  return { methods, onSubmit, onChangeForm, serverErrorMessage };
+  return {
+    methods,
+    onSubmit,
+    onChangeForm,
+    serverErrorMessage,
+    serverError,
+    isLoading,
+  };
 };

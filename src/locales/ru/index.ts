@@ -1,4 +1,16 @@
 export const localizationRu = {
+  registrationPage: {
+    title: "Регистрация",
+    subtitle: "Пожалуйста зарегистрируйтесь, чтобы продолжить.",
+    account: "Уже есть аккаунт?",
+    signUp: "Зарегистрироваться",
+  },
+  loginPage: {
+    title: "Вход",
+    subtitle: "Пожалуйста войдите, чтобы продолжить.",
+    account: "Нет аккаунта?",
+    signIn: "Войти",
+  },
   common: {
     send: "Отправить",
   },
