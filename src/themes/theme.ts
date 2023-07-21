@@ -5,6 +5,9 @@ export const theme = createTheme({
     primary: {
       main: "#faa233",
     },
+    background: {
+      default: "#f6f6f6",
+    },
   },
   components: {
     MuiButton: {
@@ -20,6 +23,33 @@ export const theme = createTheme({
         root: {
           fontSize: "14px", // Adjust the font size as needed
           border: "none", // Remove the borders
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 25,
+          // boxShadow: "0px 3px 10px 0px rgba(0, 0, 0, 0.03)",
+          boxShadow: "none",
+          backgroundColor: "#efefef",
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
+          backgroundColor: "#fff",
+          padding: "16px",
+          borderRadius: "25px 25px 0 0",
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          padding: 0,
         },
       },
     },

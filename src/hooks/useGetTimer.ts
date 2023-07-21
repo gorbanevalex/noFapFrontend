@@ -8,7 +8,7 @@ export const useGetTimer = () => {
   useEffect(() => {
     const changedTimer = setInterval(() => {
       const nowDate = new Date();
-      setActualTimer(nowDate.valueOf() - userData.timer);
+      setActualTimer(nowDate.valueOf() - userData?.timer);
     }, 1000);
 
     return () => {

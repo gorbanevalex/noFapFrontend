@@ -5,6 +5,7 @@ import {
   Link,
   Snackbar,
   IconButton,
+  Container,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import i18n from "i18nConfig";
@@ -52,66 +53,68 @@ const Login = () => {
   );
 
   return (
-    <FormProvider {...methods}>
-      <form
-        className={classes.form}
-        onSubmit={handleSubmit((data) => onSubmit(data))}
-        onChange={onChangeForm}
-      >
-        <div className={classes.title}>
-          <Typography variant="h1" component="h2">
-            {t("loginPage.title")}
-          </Typography>
-          <Typography variant="subtitle2" component="p">
-            {t("loginPage.subtitle")}
-          </Typography>
-        </div>
-        <TextField
-          {...register("login")}
-          label={t("auth.login")}
-          helperText={errors.login?.message}
-          error={!!errors.login}
-          className={classes.textField}
-          variant="standard"
-        />
-        <TextField
-          {...register("password")}
-          label={t("auth.password")}
-          helperText={errors.password?.message}
-          error={!!errors.password}
-          className={classes.textField}
-          type="password"
-          variant="standard"
-        />
-        <LoadingButton
-          type="submit"
-          size="large"
-          variant="contained"
-          loading={isLoading}
-          loadingPosition="end"
-          endIcon={<ArrowForward />}
-          disabled={!isDirty || !isValid || serverError}
-          className={classes.button}
+    <Container className={classes.container}>
+      <FormProvider {...methods}>
+        <form
+          className={classes.form}
+          onSubmit={handleSubmit((data) => onSubmit(data))}
+          onChange={onChangeForm}
         >
-          {t("loginPage.signIn")}
-        </LoadingButton>
-        <Typography className={classes.bottomText} component="p">
-          {t("loginPage.account") + " "}
-          <Link component={RouterLink} to="/registration" underline="none">
-            {t("registrationPage.signUp")}
-          </Link>
-        </Typography>
-      </form>
-      <Snackbar
-        open={isOpenErrorSnackbar}
-        autoHideDuration={5000}
-        onClose={() => {
-          setIsOpenErrorSnackbar(false);
-        }}
-        message={serverErrorMessage}
-        action={errorSnackbarAction}
-      />
-    </FormProvider>
+          <div className={classes.title}>
+            <Typography variant="h1" component="h2">
+              {t("loginPage.title")}
+            </Typography>
+            <Typography variant="subtitle2" component="p">
+              {t("loginPage.subtitle")}
+            </Typography>
+          </div>
+          <TextField
+            {...register("login")}
+            label={t("auth.login")}
+            helperText={errors.login?.message}
+            error={!!errors.login}
+            className={classes.textField}
+            variant="standard"
+          />
+          <TextField
+            {...register("password")}
+            label={t("auth.password")}
+            helperText={errors.password?.message}
+            error={!!errors.password}
+            className={classes.textField}
+            type="password"
+            variant="standard"
+          />
+          <LoadingButton
+            type="submit"
+            size="large"
+            variant="contained"
+            loading={isLoading}
+            loadingPosition="end"
+            endIcon={<ArrowForward />}
+            disabled={!isDirty || !isValid || serverError}
+            className={classes.button}
+          >
+            {t("loginPage.signIn")}
+          </LoadingButton>
+          <Typography className={classes.bottomText} component="p">
+            {t("loginPage.account") + " "}
+            <Link component={RouterLink} to="/registration" underline="none">
+              {t("registrationPage.signUp")}
+            </Link>
+          </Typography>
+        </form>
+        <Snackbar
+          open={isOpenErrorSnackbar}
+          autoHideDuration={5000}
+          onClose={() => {
+            setIsOpenErrorSnackbar(false);
+          }}
+          message={serverErrorMessage}
+          action={errorSnackbarAction}
+        />
+      </FormProvider>
+    </Container>
   );
 };
 
