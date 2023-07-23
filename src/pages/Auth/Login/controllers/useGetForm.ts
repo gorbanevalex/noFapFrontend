@@ -37,6 +37,7 @@ export const useGetForm = () => {
         setUserData(res.data.user);
         setUserToken(res.data.token);
         setIsLoading(false);
+        window.location.reload();
       })
       .catch((error) => {
         setServerErrorMessage(error.response.data.msg);

@@ -13,6 +13,14 @@ export const getUserData = (): UserAuthResponse | null => {
   return null;
 };
 
+export const getUserToken = (): string | undefined => {
+  const userToken = localStorage.getItem("token");
+  if (userToken) {
+    return userToken as string;
+  }
+  return undefined;
+};
+
 export const setUserToken = (token: string) => {
   localStorage.setItem("token", token);
 };

@@ -6,4 +6,5 @@ export enum ApiRoute {
 export enum ScreenRoute {
   REGISTRATION = "registration",
   LOGIN = "login",
+  STATS = "stats",
 }

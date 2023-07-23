@@ -64,29 +64,27 @@ const Stats = () => {
     formatProgress(actualTimer);
   }, [actualTimer]);
 
-
-
-const ColorlibStepIconRoot = styled("div")<{
-  ownerState: { completed?: boolean; active?: boolean };
-}>(({ theme, ownerState }) => ({
-  backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
-  zIndex: 1,
-  color: "#fff",
-  width: 40,
-  height: 40,
-  display: "flex",
-  borderRadius: 10,
-  justifyContent: "center",
-  alignItems: "center",
-  ...(ownerState.active && {
-    backgroundColor: "#faa233",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
-  }),
-  ...(ownerState.completed && {
-    backgroundColor: "#faa233",
-  }),
-}));
+  const ColorlibStepIconRoot = styled("div")<{
+    ownerState: { completed?: boolean; active?: boolean };
+  }>(({ theme, ownerState }) => ({
+    backgroundColor:
+      theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
+    zIndex: 1,
+    color: "#fff",
+    width: 40,
+    height: 40,
+    display: "flex",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    ...(ownerState.active && {
+      backgroundColor: "#faa233",
+      boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
+    }),
+    ...(ownerState.completed && {
+      backgroundColor: "#faa233",
+    }),
+  }));
 
   function ColorlibStepIcon(props: StepIconProps) {
     const { active, completed, className } = props;
