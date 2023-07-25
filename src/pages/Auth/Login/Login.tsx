@@ -5,7 +5,6 @@ import {
   Link,
   Snackbar,
   IconButton,
-  Container,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import i18n from "i18nConfig";
@@ -14,6 +13,7 @@ import { useGetForm } from "./controllers/useGetForm";
 import { Link as RouterLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowForward, Close } from "@mui/icons-material";
+import AuthContainer from "../AuthContainer/AuthContainer";
 
 const Login = () => {
   const classes = useStyles();
@@ -53,7 +53,7 @@ const Login = () => {
   );
 
   return (
-    <Container className={classes.container}>
+    <AuthContainer>
       <FormProvider {...methods}>
         <form
           className={classes.form}
@@ -114,7 +114,7 @@ const Login = () => {
           action={errorSnackbarAction}
         />
       </FormProvider>
-    </Container>
+    </AuthContainer>
   );
 };
 

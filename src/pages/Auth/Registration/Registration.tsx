@@ -1,11 +1,12 @@
 import { FormProvider } from "react-hook-form";
-import { Typography, TextField, Link, Container } from "@mui/material";
+import { Typography, TextField, Link } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import i18n from "i18nConfig";
 import { useStyles } from "./Registration.style";
 import { useGetForm } from "./controllers/useGetForm";
 import { Link as RouterLink } from "react-router-dom";
 import { ArrowForward } from "@mui/icons-material";
+import AuthContainer from "../AuthContainer/AuthContainer";
 
 const Registration = () => {
   const classes = useStyles();
@@ -20,7 +21,7 @@ const Registration = () => {
   } = methods;
 
   return (
-    <Container className={classes.container}>
+    <AuthContainer>
       <FormProvider {...methods}>
         <form
           className={classes.form}
@@ -79,7 +80,7 @@ const Registration = () => {
           </Typography>
         </form>
       </FormProvider>
-    </Container>
+    </AuthContainer>
   );
 };
 

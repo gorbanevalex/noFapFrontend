@@ -1,15 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { ReactNode } from "react";
+import { Box, CircularProgress } from "@mui/material";
 
-const CircularTextProgress = ({size, thickness, progressPercent, text }) => {
+type Props = {
+  size: number;
+  thickness: number;
+  milliseconds: number;
+  maximumMilliseconds: number;
+  children: ReactNode;
+};
 
+const CircularTextProgress = ({
+  size,
+  thickness,
+  milliseconds,
+  maximumMilliseconds,
+  children,
+}: Props) => {
   return (
     <Box position="relative" display="inline-flex">
       <CircularProgress
         size={size}
         thickness={thickness}
         variant="determinate"
-        value={progressPercent}
+        value={(milliseconds / maximumMilliseconds) * 100}
       />
       <Box
         top={0}
@@ -21,7 +34,7 @@ const CircularTextProgress = ({size, thickness, progressPercent, text }) => {
         alignItems="center"
         justifyContent="center"
       >
-          {text}
+        {children}
       </Box>
     </Box>
   );
