@@ -6,7 +6,6 @@ export const useStyles = makeStyles(() => ({
     bottom: 0,
     left: 0,
     width: "100%",
-    height: "30px",
-    backgroundColor: "green",
+    height: "min-content",
   },
 }));

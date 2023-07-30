@@ -6,7 +6,7 @@ import { ScreenRoute } from "utils/constant";
 
 export const MainRoute = () => {
   return (
-    <Box sx={{ position: "relative", paddingBottom: "30px" }}>
+    <Box sx={{ position: "relative", paddingBottom: "56px" }}>
       <Routes>
         <Route path={ScreenRoute.STATS} element={<Stats />} />
         <Route path="*" element={<Stats />} />

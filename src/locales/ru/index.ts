@@ -11,6 +11,11 @@ export const localizationRu = {
     account: "Нет аккаунта?",
     signIn: "Войти",
   },
+  bottomMenu: {
+    stats: "Статистика",
+    health: "Здоровье",
+    achievements: "Достижения"
+  },
   common: {
     send: "Отправить",
   },
